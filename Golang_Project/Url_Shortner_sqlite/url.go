@@ -27,7 +27,7 @@ func main() {
 	for {
 		fmt.Println("\n----URL Shortener Program----")
 		fmt.Print("1. Get the short URL\n2. Expand the URL\n3. Print All URLs\n4. Exit\n")
-		fmt.Print("Enter your choice: ")
+		fmt.Print("Enter your choice to get the result: ")
 		fmt.Scan(&ch)
 
 		
@@ -46,7 +46,7 @@ func main() {
 			original_url, found := expand(short_url)
 			if found {
 				fmt.Println("Expanded URL: ", original_url)
-			} else {
+			} else { 
 				fmt.Println("Short URL not found.")
 			}
 		case 3:
