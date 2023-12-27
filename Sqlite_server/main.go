@@ -1,4 +1,4 @@
-package main
+
 
 //curl command
 
@@ -19,12 +19,16 @@ curl -X POST -H "Content-Type: application/json" -d '{"username": "newuser", "em
 curl -X PUT -H "Content-Type: application/json" -d '{"username": "updateduser", "email": "updateduser@example.com"}' http://localhost:8080/users?id=2
 
 */
+
+
+package main
+
 import (
 	"database/sql"
 	"encoding/json"
-	"strconv"  // Add this import for strconv
 	"log"
 	"net/http"
+	"strconv"
 	_ "github.com/mattn/go-sqlite3"
 )
 
@@ -60,13 +64,13 @@ func main() {
 	http.HandleFunc("/users", func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case http.MethodGet:
-			// in these w and r is used to read and write inside the functions
 			getUsersHandler(w, r, db)
 		case http.MethodPost:
 			addUserHandler(w, r, db)
 		case http.MethodDelete:
 			deleteUserHandler(w, r, db)
-		
+		case http.MethodPut:
+			updateUserHandler(w, r, db)
 		default:
 			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		}
@@ -76,8 +80,8 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
-// ffunction to get data from the table
-func getUsersHandler(w http.ResponseWriter, r *http.Request, db *sql.DB) {	
+// getUsersHandler retrieves all users from the database
+func getUsersHandler(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	queryDataSQL := "SELECT id, username, email FROM users"
 	rows, err := db.Query(queryDataSQL)
 	if err != nil {
@@ -98,7 +102,7 @@ func getUsersHandler(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 		users = append(users, user)
 	}
 
-	// Cater getting data from the tale convert it into the JSON format
+	// Convert data to JSON
 	jsonData, err := json.Marshal(users)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -112,42 +116,7 @@ func getUsersHandler(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	w.Write(jsonData)
 }
 
-// function to delete the data on the basis of userid  
-func deleteUserHandler(w http.ResponseWriter, r *http.Request, db *sql.DB) {
-    if r.Method != http.MethodDelete {
-        http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-        return
-    }
-
-    // Parse the user ID from the request URL
-    userID := r.URL.Query().Get("id")
-    if userID == "" {
-        http.Error(w, "Missing user ID in the request", http.StatusBadRequest)
-        return
-    }
-
-    // Convert userID to an integer
-	// strconv.Atoi: is used to convert string into integer
-    id, err := strconv.Atoi(userID)
-    if err != nil {
-        http.Error(w, "Invalid user ID", http.StatusBadRequest)
-        return
-    }
-
-    // Delete the user with the specified ID
-    deleteDataSQL := "DELETE FROM users WHERE id = ?"
-    _, err = db.Exec(deleteDataSQL, id)
-    if err != nil {
-        http.Error(w, err.Error(), http.StatusInternalServerError)
-        return
-    }
-
-    // Respond with success message
-    w.WriteHeader(http.StatusOK)
-    w.Write([]byte("User deleted successfully"))
-}
-
-// function to post/ save data into database
+// addUserHandler adds a new user to the database
 func addUserHandler(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	// Parse JSON request body
 	var newUser User
@@ -156,47 +125,6 @@ func addUserHandler(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	func updateUserHandler(w http.ResponseWriter, r *http.Request, db *sql.DB) {
-		if r.Method != http.MethodPut {
-			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-			return
-		}
-	
-		// Parse the user ID from the request URL
-		userID := r.URL.Query().Get("id")
-		if userID == "" {
-			http.Error(w, "Missing user ID in the request", http.StatusBadRequest)
-			return
-		}
-	
-		// Convert userID to an integer
-		id, err := strconv.Atoi(userID)
-		if err != nil {
-			http.Error(w, "Invalid user ID", http.StatusBadRequest)
-			return
-		}
-	
-		// Parse JSON request body
-		var updatedUser User
-		err = json.NewDecoder(r.Body).Decode(&updatedUser)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusBadRequest)
-			return
-		}
-	
-		// Update the user with the specified ID
-		updateDataSQL := "UPDATE users SET username = ?, email = ? WHERE id = ?"
-		_, err = db.Exec(updateDataSQL, updatedUser.Username, updatedUser.Email, id)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-	
-		// Respond with success message
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte("User updated successfully"))
-	}
-	
 
 	// Insert data into the table
 	insertDataSQL := "INSERT INTO users (username, email) VALUES (?, ?)"
@@ -209,5 +137,81 @@ func addUserHandler(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	// Respond with success message
 	w.WriteHeader(http.StatusCreated)
 	w.Write([]byte("User added successfully"))
+}
+
+// deleteUserHandler deletes a user from the database
+func deleteUserHandler(w http.ResponseWriter, r *http.Request, db *sql.DB) {
+	if r.Method != http.MethodDelete {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	// Parse the user ID from the request URL
+	userID := r.URL.Query().Get("id")
+	if userID == "" {
+		http.Error(w, "Missing user ID in the request", http.StatusBadRequest)
+		return
+	}
+
+	// Convert userID to an integer
+	id, err := strconv.Atoi(userID)
+	if err != nil {
+		http.Error(w, "Invalid user ID", http.StatusBadRequest)
+		return
+	}
+
+	// Delete the user with the specified ID
+	deleteDataSQL := "DELETE FROM users WHERE id = ?"
+	_, err = db.Exec(deleteDataSQL, id)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	// Respond with success message
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("User deleted successfully"))
+}
+
+// updateUserHandler updates a user in the database
+func updateUserHandler(w http.ResponseWriter, r *http.Request, db *sql.DB) {
+	if r.Method != http.MethodPut {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	// Parse the user ID from the request URL
+	userID := r.URL.Query().Get("id")
+	if userID == "" {
+		http.Error(w, "Missing user ID in the request", http.StatusBadRequest)
+		return
+	}
+
+	// Convert userID to an integer
+	id, err := strconv.Atoi(userID)
+	if err != nil {
+		http.Error(w, "Invalid user ID", http.StatusBadRequest)
+		return
+	}
+
+	// Parse JSON request body
+	var updatedUser User
+	err = json.NewDecoder(r.Body).Decode(&updatedUser)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	// Update the user with the specified ID
+	updateDataSQL := "UPDATE users SET username = ?, email = ? WHERE id = ?"
+	_, err = db.Exec(updateDataSQL, updatedUser.Username, updatedUser.Email, id)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	// Respond with success message
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("User updated successfully"))
 }
 
