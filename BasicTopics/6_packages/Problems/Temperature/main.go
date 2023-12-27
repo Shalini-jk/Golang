@@ -7,7 +7,7 @@ import (
 )
 
 func main(){
-	fmt.Println("Convert the temperature from celsius to faherheit and vice versa")
+	fmt.Println("Convert the temperature from celsius to fahenheit)
 	temp_conv.Temperature_Conversion()
 	
 	
