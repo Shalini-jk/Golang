@@ -1,0 +1,3 @@
+/*
+Create a program that copies the content of one file to another. Allow the user to specify the source and destination file paths.
+*/

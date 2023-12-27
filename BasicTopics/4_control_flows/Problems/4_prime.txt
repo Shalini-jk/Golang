@@ -1,0 +1,19 @@
+Your code attempts to check whether a given number is prime or not. Here are some feedback 
+points:
+
+1. Variable Naming and Formatting: Your variable names are clear and descriptive, which is good.
+The formatting of your code is also reasonable.
+
+2.Input Validation: You check if the input is less than 1 and declare it as not a prime number.
+ This is appropriate as prime numbers are defined for integers greater than 1.
+
+3. Logic for Checking Prime: You correctly use a loop to check divisibility from 2 to the 
+square root of the input.However, your loop condition might be simplified. You can iterate up 
+to issqu directly without creating a separate variable issqu.
+
+4.Print Statements:Your print statements provide useful information for understanding the flow 
+of the program, such as displaying the square root of the input.
+
+5. Logic Improvement: Since you've initialized prime to true and only set it to false if a 
+factor is found, you can invert the condition in the final if statement. It might make the 
+code a bit cleaner

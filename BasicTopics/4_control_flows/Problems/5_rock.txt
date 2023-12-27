@@ -1,0 +1,14 @@
+1. User Input Validation:
+It might be a good idea to validate user input to ensure it's one of the expected choices 
+(Rock, Paper, or Scissors). This can prevent unexpected behavior if the user enters something 
+else.
+
+2. Function Decomposition:
+While your code is concise, you might consider decomposing parts of it into separate 
+functions to improve readability and maintainability. For example, you could have a function 
+to get the user's choice, a function to get the computer's random choice, and a function to 
+determine the winner.
+
+3. Consistency in Output:
+Ensure consistency in your output messages. For example, consider changing "you win !!" to "
+You win!" for uniformity.
