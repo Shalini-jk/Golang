@@ -30,16 +30,14 @@ func main(){
 	if (input < 1){
 		prime = false
 		fmt.Println(" 1 is not a prime number")
-	}else{
+	} else {
 
 	// get square root of a number using math package
 	squinput := math.Sqrt(float64(input))
 	fmt.Println("Square root of the given number",squinput)
-	issqu := int(squinput)
-	fmt.Println("Square root of the given number",issqu)
 
 	// write the logic to check the number is prime number or not
-	for i := 2 ; i <= issqu ; i++ {
+	for i := 2 ; i <= int(squinput); i++ {
 		if input % i == 0 {
 			prime = false
 			break
@@ -47,12 +45,13 @@ func main(){
 		}
 	}
 }
-if prime == false {
-	fmt.Println(" The number is not a prime number")
+     if prime == false {
+		
+	    fmt.Println(" The number is not a prime number")
 
-}else{
-	fmt.Println(" The number is a prime number")
-}
+    } else {
+	    fmt.Println(" The number is a prime number")
+    }
 	
 }
 
