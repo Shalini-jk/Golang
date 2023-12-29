@@ -9,43 +9,33 @@ Algorithm :
   3. If the specified word exist then we replaced that word with desired word.
 */
 
-
-package main
+package main 
 
 import (
 	"fmt"
-	"io/ioutil"
-	"strings"
+	"os"
+	"io"
+	"bufio"
 )
 
-func replaceInFile(filePath, oldSubstring, newSubstring string) error {
-	// Read the content of the file
-	content, err := ioutil.ReadFile(filePath)
-	if err != nil {
-		return err
-	}
-
-	// Perform the replacement using strings.Replace
-	modifiedContent := strings.Replace(string(content), oldSubstring, newSubstring, -1)
-
-	// Write the modified content back to the file
-	err = ioutil.WriteFile(filePath, []byte(modifiedContent), 0644)
-	if err != nil {
-		return err
-	}
-
-	fmt.Printf("Replacement in file '%s' completed.\n", filePath)
-	return nil
-}
-
 func main() {
-	filePath := "dest.txt"
-	oldSubstring := "shalini"
-	newSubstring := "malini"
-
-	err := replaceInFile(filePath, oldSubstring, newSubstring)
+	sourcefile, err := os.Open("dest.txt")
 	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
+        fmt.Println("Error opening file:", err)
+        return
+    }
+    defer sourcefile.Close()
+
+	//Create a buffered reader
+    reader := bufio.NewReader(sourcefile)
+	for {
+        _, err := reader.ReadString('\n')
+		replacefile := string.replaced(sourcefile, "shalini", "malini")
+        if err != nil {
+            break // End of file
+			
+        }
+    }
+	fmt.Println(dest.txt)
 }
+
