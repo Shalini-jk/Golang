@@ -9,33 +9,4 @@ Algorithm :
   3. If the specified word exist then we replaced that word with desired word.
 */
 
-package main 
-
-import (
-	"fmt"
-	"os"
-	"io"
-	"bufio"
-)
-
-func main() {
-	sourcefile, err := os.Open("dest.txt")
-	if err != nil {
-        fmt.Println("Error opening file:", err)
-        return
-    }
-    defer sourcefile.Close()
-
-	//Create a buffered reader
-    reader := bufio.NewReader(sourcefile)
-	for {
-        _, err := reader.ReadString('\n')
-		replacefile := string.replaced(sourcefile, "man", "animal")
-        if err != nil {
-            break // End of file
-			
-        }
-    }
-	fmt.Println(dest.txt)
-}
 
