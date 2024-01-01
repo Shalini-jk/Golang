@@ -26,7 +26,6 @@ func main() {
     } else {
 		fmt.Println("Factorial is not defined for negative numbers.")
 	}
-
 	// Print the result
 	fmt.Printf("Factorial of %d is: %d\n", input, factorial)
 }

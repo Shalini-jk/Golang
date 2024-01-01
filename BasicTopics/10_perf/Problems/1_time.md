@@ -1,0 +1,1 @@
+Use the elapsed time to measure the time taken by different sorting algo and search algo.

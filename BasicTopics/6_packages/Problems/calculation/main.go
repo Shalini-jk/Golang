@@ -17,7 +17,7 @@ func main(){
 	
 	switch choice {
 	case 1:
-		operation.Addition()
+		fmt.Println(operation.Add(5,3))
 	case 2:
 		operation.Subtraction()
 	case 3:

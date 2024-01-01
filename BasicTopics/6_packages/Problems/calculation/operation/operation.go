@@ -4,14 +4,14 @@ import (
 	"fmt"
 )
 
-func Addition() {
+//unc Addition() //{
 	//declare variable
-	var First_number float64
-	var Second_number float64
-	var Result float64
+	//var First_number float64
+	//var Second_number float64
+	//var Result float64
 
 	// Take input
-	fmt.Println("Enter the First Number")
+	/*fmt.Println("Enter the First Number")
 	fmt.Scan(&First_number)
 
 	fmt.Println("Enter the second Number")
@@ -20,6 +20,9 @@ func Addition() {
 	Result = First_number + Second_number
 	
 	fmt.Println("The Addition of two number :",Result)
+}*/
+func Add(a, b int) int {
+    return a + b
 }
 
 func Subtraction() {

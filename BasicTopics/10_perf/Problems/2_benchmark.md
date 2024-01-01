@@ -1,0 +1,1 @@
+Use the benchmark method to measure time for the same searching and sorting algo.
