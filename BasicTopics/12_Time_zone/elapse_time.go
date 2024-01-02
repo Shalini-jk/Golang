@@ -20,7 +20,7 @@ func main() {
 	elapsedTime := endTime.Sub(startTime)
 	// print the temperature in celsius and fahrenhiet
 	fmt.Printf("The Temperature in Celsius: %.2f °C\n", celsius)
-    fmt.Printf("The Temperature in Fahrenheit: %.2f °F\n", fahrenheit)
+      fmt.Printf("The Temperature in Fahrenheit: %.2f °F\n", fahrenheit)
 	fmt.Println("elapsed time (Total time to complete the prgram):", elapsedTime)
 	
 
