@@ -57,8 +57,4 @@ func main() {
 		numbers1 = append(numbers1, inputValue)
 	}
 	fmt.Println(numbers1)
-
-
-
-
 }
