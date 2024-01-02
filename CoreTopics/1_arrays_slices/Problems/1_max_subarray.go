@@ -16,6 +16,7 @@ Algorithm :
  4. find the largest sum and after finding that print its equivalent su array.
 */
 
+// program
 package main 
 
 import (
