@@ -41,7 +41,7 @@ func main() {
 			// Now use append function to add the element in slice
 			all_possible_sub_array = append(all_possible_sub_array, sub_array)
 
-			// Calculate the sum of the subarray
+			// try to do the sum of the subarray
 			sum := 0
 			for _, num := range sub_array {
 				sum += num
