@@ -43,8 +43,20 @@ func main() {
 	slice1 := []int{1,7,8,9,0,6,4}
 	fmt.Println(slice1)
 
-	slice2 := make([]int, 6)
-	fmt.Println(slice2)
+	var numbers1 []int
+	//Prompt the user to enter values for the slice
+	var userInput int
+	fmt.Print("Enter the number of elements: ")
+	fmt.Scan(&userInput)
+
+	fmt.Println("Enter values for the slice:")
+	for i := 0; i < userInput; i++ {
+		var inputValue int
+		fmt.Printf("Enter value for element %d: ", i)
+		fmt.Scan(&inputValue)
+		numbers1 = append(numbers1, inputValue)
+	}
+	fmt.Println(numbers1)
 
 
 
