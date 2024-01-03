@@ -13,7 +13,7 @@ Algorithm :
  1. first we create a array
  2. then we create all the possible sub arrray from the existing array
  3. and print the sum of all the created sub array 
- 4. find the largest sum and after finding that print its equivalent su array.
+ 4. find the largest sum and after finding that print its equivalent sub array.
 */
 
 // program
@@ -57,21 +57,11 @@ func main() {
 				startIndex, endIndex = start_number, end_number-1
 				//fmt.Println(startIndex)
 			}
+			fmt.Printf("Subarray: %v, Sum: %d\n", sub_array, sum)
 		}
 	}
-
-		for _, sub_array := range all_possible_sub_array {
-			fmt.Println(sub_array)
-			// try to do the sum of the  each subarray
-			sum := 0
-			for _, num := range sub_array {
-				sum += num
-			}
-		fmt.Printf("Subarray: %v, Sum: %d\n", sub_array, sum)
-	
-    }
 	fmt.Println("maximum sum among all the sum of subarray",maxSum)
 	fmt.Printf("Subarray along with maximum sum: %v\n", arr[startIndex:endIndex+1])
-  }
+}
 
 	
