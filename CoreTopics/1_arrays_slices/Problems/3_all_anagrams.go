@@ -13,4 +13,6 @@ Explanation:
 The substring with starting index 0 is "cba," which is an anagram of "abc."
 The substring with starting index 6 is "bac," which is an anagram of "abc
 
+Algorithm :
+    1. take a string as a input 
 */
