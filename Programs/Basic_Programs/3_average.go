@@ -15,15 +15,28 @@ func main()  {
 
 	//taking input from user
 	fmt.Println("Enter the first numebr")
-	fmt.Scan(&first_number)
-
+	_, err := fmt.Scanln(&first_number)
+	if err != nil {
+		fmt.Println("The entered number is not Integer",err)
+		return
+	}
+	
 	fmt.Println("Enter the second number")
-	fmt.Scan(&second_number)
+	_, err = fmt.Scanln(&second_number)
+	if err != nil {
+		fmt.Println("The entered number is not Integer",err)
+		return
+	}
 
+	
 	fmt.Println("Enter the third number")
-	fmt.Scan(&third_number)
+	_, err = fmt.Scanln(&third_number)
+	if err != nil  {
+		fmt.Println("The entered numer is not Integer",err)
+		return
+	}
 
     // printing the result
-	average := (first_number + second_number + third_number) /3
+	average := (first_number + second_number + third_number) / 3
 	fmt.Println("The average of three number:", average)
 }

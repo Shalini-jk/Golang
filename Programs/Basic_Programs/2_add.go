@@ -13,10 +13,18 @@ func main() {
 
 	//taking input from user
 	fmt.Println("Enter the first number")
-	fmt.Scan(&first_number)
+	_, err := fmt.Scanln(&first_number)
+	if err != nil {
+		fmt.Println("The Entered value is not an integer",err)
+		return
+	} 
 
 	fmt.Println("Enter the second number")
-	fmt.Scan(&second_number)
+	_, err = fmt.Scanln(&second_number)
+	if err != nil {
+		fmt.Println("The Entered value is not an integer",err)
+		return
+	}
 
 	//printing the result
 	result := first_number + second_number

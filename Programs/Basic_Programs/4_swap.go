@@ -14,10 +14,18 @@ func main()  {
 	
 	// taking input from user
 	fmt.Println("Enter the first number")
-	fmt.Scan(&first_number)
+	_, err := fmt.Scanln(&first_number)
+	if err != nil {
+		fmt.Println("The Entered number is not INteger",err)
+		return
+	}
 
 	fmt.Println("Enter the second number")
-	fmt.Scan(&second_number)
+	_,err = fmt.Scan(&second_number)
+	if err != nil {
+		fmt.Println("The Entered number is not Integer",err)
+	}
+
 	fmt.Println("the number before swapping",first_number,second_number)
 
 	//swap two number by using third number
