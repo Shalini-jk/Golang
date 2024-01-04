@@ -24,6 +24,7 @@ func main()  {
 	_,err = fmt.Scan(&second_number)
 	if err != nil {
 		fmt.Println("The Entered number is not Integer",err)
+		return
 	}
 
 	fmt.Println("the number before swapping",first_number,second_number)
