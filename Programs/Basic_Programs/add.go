@@ -18,6 +18,7 @@ func main() {
 	fmt.Println("Enter the second number")
 	fmt.Scan(&second_number)
 
+	//printing the result
 	result := first_number + second_number
 	fmt.Println("the addition of two integer value",result)
 }
