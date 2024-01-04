@@ -23,7 +23,7 @@ func main()  {
 	fmt.Println("Enter the third number")
 	fmt.Scan(&third_number)
 
-    // printing the result
+        // printing the result
 	average := (first_number + second_number + third_number) /3
 	fmt.Println("The average of three number:", average)
 }
