@@ -38,51 +38,53 @@ func main() {
       {9,10,11,12},
    }
    // creating an empty slice
-   var traversal_slice1 []int
+   //var traversal_slice1 []int
    //var traversal_slice2 []int
    //var traversal_slice3 []int
    //var traversal_slice4 []int
+   var traversal_slice []int
    
    fmt.Println(matrix1)
 
    // then use a loop to traverse upper outer row
-   //fmt.Println("......first row of matrix.......")
+   fmt.Println("......first row of matrix.......")
    for i := 0 ; i < len(matrix1[0])-1 ; i++ {
       //fmt.Println(matrix1[0][i])
       //append the traverse element in empty slice
-      traversal_slice1 = append(traversal_slice1,matrix1[0][i]) 
+      traversal_slice = append(traversal_slice,matrix1[0][i]) 
    }
-   //fmt.Println(traversal_slice1)
+   fmt.Println(traversal_slice)
 
    //then traverse the outer column
-   //fmt.Println(".....traverse the outer column......")
+   fmt.Println(".....traverse the outer column......")
    column_index := 3 // it specify that we are using last column 
    for m := 0 ; m < len(matrix1) ; m++ {
       //fmt.Println(matrix1[m][column_index])
       //append the traverse element again in the half filled slice
-      traversal_slice1 = append(traversal_slice1,matrix1[m][column_index]) 
+      traversal_slice = append(traversal_slice,matrix1[m][column_index]) 
        
    }
-   //fmt.Println(traversal_slice4)
+   //fmt.Println(traversal_slice)
 
    // then traverse the last row
-   //fmt.Println("..........last row of matrix......")
+   fmt.Println("..........last row of matrix......")
    for j := len(matrix1[2])- 2 ; j>=0 ; j-- {
       //fmt.Println(matrix1[2][j])
       //append the traverse element again in the half filled slice
-      traversal_slice1 = append(traversal_slice1,matrix1[2][j]) 
+      traversal_slice= append(traversal_slice,matrix1[2][j]) 
    }
-   //fmt.Println(traversal_slice1)
+   fmt.Println(traversal_slice)
 
    //then traverse the row(middle alement of array)
-   //fmt.Println(".........second row of matrix..........")
+   fmt.Println(".........second row of matrix..........")
    for k := 0 ; k < len(matrix1[1])-1 ; k++ {
       //fmt.Println(matrix1[1][k])
       //append the traverse element again in the half filled slice
-      traversal_slice1 = append(traversal_slice1,matrix1[1][k]) 
+      traversal_slice = append(traversal_slice,matrix1[1][k]) 
    }
+   fmt.Println(traversal_slice)
    fmt.Println(".........sprial traversal of matrix..........")
-   fmt.Println(traversal_slice1)
+   fmt.Println(traversal_slice)
 
    
 }
