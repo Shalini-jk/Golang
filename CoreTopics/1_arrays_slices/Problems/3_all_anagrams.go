@@ -44,8 +44,6 @@ func main() {
     fmt.Println("Input the string whose anagram is to find")
     fmt.Scan(&anagram_string)
     fmt.Println("The anagram string :",anagram_string)
-    for i := 0 ; i < len(first_string) ; i++ {
-        fmt.Println(first_string[i])
-    }
+    
 
 }

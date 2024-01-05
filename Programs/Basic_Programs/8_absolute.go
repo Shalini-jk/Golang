@@ -13,9 +13,13 @@ func main()  {
 
 	//taking input from user
 	fmt.Println("Enter the number whose asolute value is needed")
-	_,err := fmt.Scan(&number)
+	_, err := fmt.Scanln(&number)
 	if err != nil {
-		fmt.Println("The number is not float or Integer",err)
+		fmt.Println("The input is not in correct format",err)
+		return
+	}
+	if number > 0 {
+		fmt.Println("The input is greater than 0 ")
 		return
 	}
 	//calculate the absolute value using math function
