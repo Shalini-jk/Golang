@@ -13,5 +13,4 @@ func main() {
 	result1 := len(arr1)
 	fmt.Println("size getting unsafe package,"result)
 	fmt.Println(result1)
-
 }
