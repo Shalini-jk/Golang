@@ -16,7 +16,7 @@ func main()  {
 	fmt.Println("Enter the number")
 	_,err := fmt.Scanln(&number)
 	if err != nil {
-		fmt.Println("The numer is not Integer or float",err)
+		fmt.Println("The number is not Integer or float",err)
 		return
 	}
 
