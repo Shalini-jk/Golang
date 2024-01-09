@@ -10,11 +10,14 @@ func main() {
 	arr1 := [] int{2,4,7,9,8,5,3,2,66,89,96}
 
 	get_size := len(arr1)
-	fmt.Println(get_size)
-	fmt.Println(arr1)
+	fmt.Println("size of previous array :",get_size)
+	fmt.Println("Previous array :",arr1)
 
 	// create another array by using the existing array
 	var arr2 []int
-	arr2 =arr1
-	fmt.Println("new array :",arr2)
+	for i := 2 ; i < len(arr1)-3 ; i++ {
+		arr2 = append(arr2, arr1[i])
+	}
+	fmt.Println("size o newl created array :",len(arr2))
+	fmt.Println("newly created array from previous one :",arr2)
 }
