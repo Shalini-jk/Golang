@@ -45,7 +45,7 @@ func main() {
 	highest_index = len(arr1)-1
 	fmt.Println("Lowest index",low_index)
 	fmt.Println("Highest index",highest_index)
-     get_found := true
+    get_found := true
 	for low_index <= highest_index {
 		// calculating the mid value
 	    middle_index = (low_index +highest_index) / 2
