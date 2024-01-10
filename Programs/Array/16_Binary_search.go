@@ -33,7 +33,7 @@ func main() {
 	var input_value int
 
 	//declare array
-	arr1 :=[] int{2,8,9,4,5,3,7,6,10}
+	arr1 :=[] int{2,8,9,4,5,3,7,6,10}// {2,3,4,5|,6,|7,8,9,10}
 	// now sort the array
 	sort.Ints(arr1)
 	fmt.Println(arr1)
@@ -45,27 +45,39 @@ func main() {
 	highest_index = len(arr1)-1
 	fmt.Println("Lowest index",low_index)
 	fmt.Println("Highest index",highest_index)
-    get_found := true
+    get_found := false
 	for low_index <= highest_index {
 		// calculating the mid value
-	    middle_index = (low_index +highest_index) / 2
+	    middle_index = (low_index + highest_index) / 2
 	    fmt.Println("Middle index",middle_index)
 		// now compare the value of middle index with the target value
 		if arr1[middle_index] == input_value {
-			get_found = false
+			get_found = true
 			break
 			//fmt.Println(middle_index)
 		} else if arr1[middle_index] < input_value {
 			// set new lowest index as the element which we searched is greater than middle element
 			low_index = middle_index + 1 
 		} else {
-			// set new lowest index as the element which we searched is smaller than the middle element
-			low_index = middle_index - 1
+			// set new highest index as the element which we searched is smaller than the middle element
+			highest_index = middle_index - 1
 		}	
 	}
-	if get_found == false {
+	if get_found == true {
 		fmt.Println("element found",input_value, "at index",middle_index)
 	} else {
 		fmt.Println("Element not found")
 	}
 }
+
+/*
+shalini@Ubuntu:~/Golang/Programs/Array$ go run 16_Binary_search.go
+[2 3 4 5 6 7 8 9 10]
+Enter the number which you want to search
+8
+Lowest index 0
+Highest index 8
+Middle index 4
+Middle index 6
+element found 8 at index 6
+*/

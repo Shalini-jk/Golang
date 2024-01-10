@@ -69,8 +69,16 @@ func main() {
 	    }
     }
 	if found_value == false {
-		fmt.Println("Searched Element founded at",give_value,"at estimated index",probable_position)
+		fmt.Println("Searched Element",give_value,"founded at estimated index",probable_position)
 	} else {
 		fmt.Println("Elemnt not found")
 	}
 }
+
+/*
+shalini@Ubuntu:~/Golang/Programs/Array$ go run 17_interpolation_search.go
+Enter the number which ou want to search
+16
+The estimated index : 7
+Searched Element 16 founded at estimated index 7
+*/

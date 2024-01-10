@@ -6,7 +6,7 @@ compares adjacent elements, and swaps them if they are in the wrong order
 
 Algorithm :
    1.  declare array
-   2.  compare adacent element and then swap them accordingly
+   2.  compare adjacent element and then swap them accordingly
 */
 
 package main 
@@ -32,7 +32,7 @@ func Ascen_bubble_sort() {
 			}
 		}
 	}
-	fmt.Println(unsorted_arr)
+	fmt.Println("Sort array in ascending order",unsorted_arr)
 }
 // sort elements in descending order
 func Desc_bubble_sort() {
@@ -52,9 +52,15 @@ func Desc_bubble_sort() {
 			}
 		}
 	}
-	fmt.Println(unsorted_arr)
+	fmt.Println("Sort array in descending order",unsorted_arr)
 }
 func main() {
 	Ascen_bubble_sort()
 	Desc_bubble_sort()
 }
+
+/*
+shalini@Ubuntu:~/Golang/Programs/Array$ go run 18_bubble_sort.go
+Sort array in ascending order [1 2 4 5 6 8 9 24 33 37 66 99]
+Sort array in descending order [99 66 37 33 24 9 8 6 5 4 2 1]
+*/
