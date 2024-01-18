@@ -18,7 +18,7 @@ func main() {
 	//declare array
 	arr1 := [] int{2,3,4}
 	arr2 := [] int{5,6,7,8,9}
-	var arr3[8]int
+	var arr3[8]int //
 
 	// geting the size of both array
 	get_size1 := len(arr1)
